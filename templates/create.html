@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Create Task</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Create New Task</h1>
+        <a class="btn btn-primary" href="{{ url_for('index') }}"
+          >Back to Tasks</a
+        >
+      </header>
+      <form method="POST">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+          {{ form.name.label(class="form-label") }} {{
+          form.name(class="form-input") }} {% for error in form.name.errors %}
+          <div class="form-error">{{ error }}</div>
+          {% endfor %}
+        </div>
+        <div class="form-group">
+          {{ form.description.label(class="form-label") }} {{
+          form.description(class="form-input") }} {% for error in
+          form.description.errors %}
+          <div class="form-error">{{ error }}</div>
+          {% endfor %}
+        </div>
+        <div class="form-group">{{ form.submit(class="btn btn-primary") }}</div>
+      </form>
+    </div>
+  </body>
+</html>
